@@ -1,0 +1,22 @@
+<article>
+  <div class="utils">
+    <div class="comment_score">
+      <button>+</button>
+      <label>{{this.comentaryData.score}}</label>
+      <button>-</button>
+    </div>
+    <button class="phoneReply" (click)="setReply()"><img src="assets/images/icon-reply.svg"/> Reply</button>
+  </div>
+  <div class="comment_content">
+    <div class="content_header">
+      <div class="header_tittle">
+        <img src="{{this.comentaryData.user.image.webp}}"/>
+        <label class="tittle_user">{{this.comentaryData.user.username}}</label>
+        <label class="tittle_date">{{this.comentaryData.createdAt}}</label>
+      </div>
+      <button class="desktopReply" (click)="setReply()"><img src="assets/images/icon-reply.svg"/> Reply</button>
+    </div>
+    <span>{{this.comentaryData.content}}</span>
+  </div>
+</article>
+

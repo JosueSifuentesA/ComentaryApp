@@ -1,0 +1,10 @@
+
+<app-comment [comentaryData]="this.comment"  (replyChange)="manageReplyStatus($event)"></app-comment>
+
+@if(isReply){
+  <app-commentary-reply></app-commentary-reply>
+}
+
+@if(this.replys && this.replys.length > 0){
+  <app-reply-handler [replysData]="this.replys"></app-reply-handler>
+}
