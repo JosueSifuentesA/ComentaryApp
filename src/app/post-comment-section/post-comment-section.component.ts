@@ -1,6 +1,5 @@
 import { Component , Input } from '@angular/core';
 
-import { ReplyHandlerComponent } from '../reply-handler/reply-handler.component';
 import { ComentaryFormComponent } from '../comentary-form/comentary-form.component';
 import { CommentaryReplyComponent } from '../commentary-reply/commentary-reply.component';
 import { ComentaryHandlerComponent } from '../comentary-handler/comentary-handler.component';
@@ -9,7 +8,7 @@ import { Comment, Image } from '../Interfaces/Utils';
 @Component({
   selector: 'app-post-comment-section',
   standalone: true,
-  imports: [ComentaryFormComponent,ReplyHandlerComponent,CommentaryReplyComponent,ComentaryHandlerComponent,HttpClientModule],
+  imports: [ComentaryFormComponent,CommentaryReplyComponent,ComentaryHandlerComponent,HttpClientModule],
   templateUrl: './post-comment-section.component.html',
   styleUrl: './post-comment-section.component.css'
 })

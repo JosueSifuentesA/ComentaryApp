@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-comentary-form',
@@ -8,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './comentary-form.component.css'
 })
 export class ComentaryFormComponent {
+
+  @Input() isReplying : boolean = false
+  buttonAction: any;
+
+  ngOnInit(){
+    if(this.isReplying){
+      this.buttonAction = 'REPLY'
+    }else{
+      this.buttonAction = 'SEND'
+    }
+  }
 
 }
