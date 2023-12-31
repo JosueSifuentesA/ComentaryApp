@@ -2,6 +2,7 @@ import { Component , Input, ElementRef } from '@angular/core';
 
 import { CommentComponent, } from '../comment/comment.component';
 import { ComentaryFormComponent } from '../comentary-form/comentary-form.component';
+import { ComentaryServiceService } from '../Services/comentary-service.service';
 
 @Component({
   selector: 'app-comentary-handler',
@@ -13,11 +14,11 @@ import { ComentaryFormComponent } from '../comentary-form/comentary-form.compone
 
 export class ComentaryHandlerComponent {
   replys : any  = []
-  isReply:boolean = false
 
+  comentaryForm:boolean = false
+  replyStatus : boolean = false
+  @Input() id : number | undefined
   buttonAction : string = ''
-
-  @Input() isReplying : boolean = false
 
   @Input() comment = {
     id:          0,
@@ -35,17 +36,22 @@ export class ComentaryHandlerComponent {
     replyingTo: ""
   }
 
-  constructor(private el : ElementRef){}
+  constructor(private el : ElementRef,private comentaryService : ComentaryServiceService){
 
-  manageReplyStatus(replyStatus : boolean) : void{
-    this.isReply = replyStatus
+  }
+
+  manageReplyStatus(value : boolean) : void{
+    this.comentaryForm = value
+    console.log( "Status de  FORMULARIO DE RESPUESTA " + this.comentaryForm)
   }
 
   ngOnInit():void{
-    console.log(this.el.nativeElement)
     if(this.comment.replies){
-     this.replys = this.comment.replies
+      this.replys = this.comment.replies
     }
+    this.comentaryService.replyStatusObservable$.subscribe(d=>{
+      this.replyStatus = d
+    })
   }
 
 

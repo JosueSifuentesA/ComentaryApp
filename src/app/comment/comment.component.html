@@ -14,7 +14,11 @@
         <label class="tittle_user">{{this.comentaryData.user.username}}</label>
         <label class="tittle_date">{{this.comentaryData.createdAt}}</label>
       </div>
-      <button class="desktopReply" (click)="setReply()"><img src="assets/images/icon-reply.svg"/> Reply</button>
+      @if(this.comentaryServiceStatus == false){
+        <button class="desktopReply" (click)="setReply()"><img src="assets/images/icon-reply.svg"/> Reply</button>
+      }@else{
+        <button style="opacity: 0.5;" class="desktopReply"><img src="assets/images/icon-reply.svg"/> Reply</button>
+      }
     </div>
     <span>{{this.comentaryData.content}}</span>
   </div>

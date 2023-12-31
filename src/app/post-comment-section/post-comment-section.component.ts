@@ -5,6 +5,7 @@ import { CommentaryReplyComponent } from '../commentary-reply/commentary-reply.c
 import { ComentaryHandlerComponent } from '../comentary-handler/comentary-handler.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Comment, Image } from '../Interfaces/Utils';
+import { ComentaryServiceService } from '../Services/comentary-service.service';
 @Component({
   selector: 'app-post-comment-section',
   standalone: true,
@@ -34,17 +35,13 @@ export class PostCommentSectionComponent {
 
   comment : any[] = []
 
-  constructor(private httpClient : HttpClient){}
+  constructor(private httpClient : HttpClient , private comentaryService: ComentaryServiceService){}
 
   ngOnInit(){
-    this.httpClient.get("assets/Data/data.json").subscribe(d=> {
+    this.dataPost = this.comentaryService.getPostComments().subscribe(d=>{
       this.dataPost = d
       this.comment = this.dataPost.comments
-      console.log(d)
-      console.log(this.comment)
     })
-
-
   }
 
 }

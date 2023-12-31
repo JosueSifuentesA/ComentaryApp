@@ -1,14 +1,15 @@
 
 <app-comment [comentaryData]="this.comment"  (replyChange)="manageReplyStatus($event)"></app-comment>
-
-@if(isReply){
-  <app-comentary-form [isReplying]="true"></app-comentary-form>
+<h1>ReplyGlobalStatus : {{this.replyStatus}}</h1>
+<h1>Comentary Form : {{comentaryForm}}</h1>
+@if(this.comentaryForm && this.replyStatus == true){
+  <app-comentary-form [comentaryId]="this.id" (replyComentaryForm)="manageReplyStatus($event)" [isReplying]="true"></app-comentary-form>
 }
 
 @if(this.replys && this.replys.length > 0){
   <div class="replyHandler">
   @for(reply of this.replys ; track $index){
-      <app-comentary-handler [comment]="reply"></app-comentary-handler>
+      <app-comentary-handler [id]="reply.id" [comment]="reply"></app-comentary-handler>
     }
   </div>
 }

@@ -1,5 +1,5 @@
 @for (varComent of this.comment; track $index) {
-  <app-comentary-handler [comment]="varComent"></app-comentary-handler>
+  <app-comentary-handler [id]="varComent.id" [comment]="varComent"></app-comentary-handler>
   }
 
 <app-comentary-form></app-comentary-form>

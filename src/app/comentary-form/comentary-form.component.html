@@ -1,5 +1,8 @@
 <form class="replyForm">
   <img src="assets/images/avatars/image-juliusomo.png"/>
-  <textarea></textarea>
-  <button>{{buttonAction}}</button>
+  <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="comentario"></textarea>
+  @if(buttonAction == 'REPLY'){
+    <button (click)="descartarComentario($event)" id="btnDescartarComentario">Cancel</button>
+  }
+  <button (click)="enviarComentario()" id="btnEnviarComentario">{{buttonAction}}</button>
 </form>
